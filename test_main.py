@@ -28,12 +28,12 @@ class TestClassSplit():
     def test_negative1(self):
         with pytest.raises(Exception) as excinfo:
             convert_func.split_line("a\tb\tc", 4, 0)
-        assert excinfo.value.message == "The wrong column number in line 0. There shoud be 4 columns, 3 found"
+        assert "The wrong column number in line 0. There shoud be 4 columns, 3 found" in str(excinfo)
 
     def test_negative2(self):
         with pytest.raises(Exception) as excinfo:
             convert_func.split_line("a\tb\tc", 2, 0)
-        assert excinfo.value.message == "The wrong column number in line 0. There shoud be 2 columns, 3 found"
+        assert "The wrong column number in line 0. There shoud be 2 columns, 3 found" in str(excinfo)
 
 
 class TestColumns():
@@ -44,4 +44,4 @@ class TestColumns():
     def test_negative(self):
         with pytest.raises(Exception) as excinfo:
             convert_func.process_columns("a\tb\ta")
-        assert excinfo.value.message == "Columns should be unique!"
+        assert "Columns should be unique!" in str(excinfo)

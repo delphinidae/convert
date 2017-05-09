@@ -48,7 +48,7 @@ def test_numbers2():
     line_dict["num:number"] = "9o"
     with pytest.raises(Exception) as excinfo:
         line.process_line(line_dict, 0)
-    assert excinfo.value.message == 'num in line 0 supposed to be a number, but it isn\'t'
+    assert 'num in line 0 supposed to be a number, but it isn\'t' in str(excinfo)
 
 
 def test_cyrillic():
